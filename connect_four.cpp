@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -9,6 +10,7 @@ const int HEIGHT = 6;
 int board[HEIGHT][WIDTH];
 int turn = 1;
 int in;
+const string left_padding = "      ";
 
 void reset()
 {
@@ -24,8 +26,9 @@ void reset()
 void display()
 {
     system("cls");
-
-    cout << "player: " << turn << endl;
+    cout << endl << endl;
+    cout << left_padding << "player: " << turn << endl << endl;
+    cout << left_padding;
     for (int i = 0; i < WIDTH; i++)
     {
         cout << i << "   ";
@@ -33,12 +36,14 @@ void display()
     cout << endl;
     for (int row = 0; row < HEIGHT; row++)
     {
+        cout << "    | ";
         for (int col = 0; col < WIDTH; col++)
         {
             cout << board[row][col] << " | ";
         }
         cout << endl;
     }
+    cout << endl;
 }
 
 bool four_in_a_row_right(int row, int col)
@@ -144,13 +149,13 @@ void input()
 {
     while (true)
     {
-        cout << "Input col: ";
+        cout << left_padding << "Enter column: ";
         cin >> in;
         if (in < 0 || in > (WIDTH-1))
-            cout << "input must be between 0 and " << WIDTH-1 << " inclusive" << endl;
+            cout << left_padding << "Input must be between 0 and " << WIDTH-1 << " inclusive" << endl;
         else  if (cin.fail())
         {
-         cout << "ERROR -- You did not enter an integer" << endl;
+         cout << left_padding << "ERROR -- You did not enter an integer" << endl;
          // get rid of failure state
          cin.clear();
          // discard 'bad' character(s)
@@ -158,7 +163,7 @@ void input()
 
         }
         else if (board[0][in] != 0)
-            cout << "col full" << endl;
+            cout << left_padding << "Column full" << endl;
 
         else
             break;
@@ -195,7 +200,7 @@ void logic()
     if (board_full())
     {
         gameover = true;
-        winner = "NONE";
+        winner = "tie!";
         return;
     }
 
