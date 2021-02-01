@@ -219,6 +219,8 @@ int main()
         logic();
     }
     display();
-    cout << "Game over. Winner: " << winner;
+    cout << left_padding << "Game over. Winner: " << winner << endl;
+    cout << left_padding << "Enter anything to quit" << endl << left_padding;
+    cin >> in;
     return 0;
 }
