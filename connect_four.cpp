@@ -2,7 +2,7 @@
 
 using namespace std;
 
-bool gameOver = false;
+bool gameover = false;
 string winner;
 const int WIDTH = 7;
 const int HEIGHT = 6;
@@ -20,6 +20,7 @@ void reset()
         }
     }
 }
+
 void display()
 {
     system("cls");
@@ -40,9 +41,7 @@ void display()
     }
 }
 
-
-
-bool fourInARowRight(int row, int col)
+bool four_in_a_row_right(int row, int col)
 {
     int first = board[row][col];
     if (first == 0)
@@ -55,7 +54,7 @@ bool fourInARowRight(int row, int col)
         return false;
     return true;
 }
-bool fourInARowDown(int row, int col)
+bool four_in_a_row_down(int row, int col)
 {
     int first = board[row][col];
     if (first == 0)
@@ -68,7 +67,7 @@ bool fourInARowDown(int row, int col)
         return false;
     return true;
 }
-bool fourInARowDownRight(int row, int col)
+bool four_in_a_row_down_right(int row, int col)
 {
     int first = board[row][col];
     if (first == 0)
@@ -82,7 +81,7 @@ bool fourInARowDownRight(int row, int col)
 
     return true;
 }
-bool fourInARowUpRight(int row, int col)
+bool four_in_a_row_up_right(int row, int col)
 {
     int first = board[row][col];
     if (first == 0)
@@ -95,13 +94,13 @@ bool fourInARowUpRight(int row, int col)
         return false;
     return true;
 }
-bool fourInARow()
+bool four_in_a_row()
 {
     for (int row = 0; row < HEIGHT; row++)
     {
         for (int col = 0; col < WIDTH-3; col++)
         {
-            if (fourInARowRight(row, col))
+            if (four_in_a_row_right(row, col))
                 return true;
         }
     }
@@ -109,7 +108,7 @@ bool fourInARow()
     {
         for (int col = 0; col < WIDTH; col++)
         {
-            if (fourInARowDown(row, col))
+            if (four_in_a_row_down(row, col))
                 return true;
         }
     }
@@ -117,7 +116,7 @@ bool fourInARow()
     {
         for (int col = 0; col < WIDTH-3; col++)
         {
-            if (fourInARowDownRight(row, col))
+            if (four_in_a_row_down_right(row, col))
                 return true;
         }
     }
@@ -125,14 +124,14 @@ bool fourInARow()
     {
         for (int col = 0; col < WIDTH-3; col++)
         {
-            if (fourInARowUpRight(row, col))
+            if (four_in_a_row_up_right(row, col))
                 return true;
         }
     }
 
     return false;
 }
-bool boardFull()
+bool board_full()
 {
     for (int col = 0; col < WIDTH; col++)
     {
@@ -167,6 +166,7 @@ void input()
 
     }
 }
+
 void logic()
 {
 
@@ -177,9 +177,9 @@ void logic()
     }
     board[row][in] = turn;
 
-    if (fourInARow())
+    if (four_in_a_row())
     {
-        gameOver = true;
+        gameover = true;
         switch(turn)
         {
         case 1:
@@ -192,9 +192,9 @@ void logic()
         return;
     }
 
-    if (boardFull())
+    if (board_full())
     {
-        gameOver = true;
+        gameover = true;
         winner = "NONE";
         return;
     }
@@ -204,10 +204,10 @@ void logic()
     else
         turn = 1;
 }
+
 int main()
 {
-
-    while (!gameOver)
+    while (!gameover)
     {
         display();
         input();
