@@ -1,7 +1,7 @@
 # connect-four
 
 ## About
-This is my implementation of Connect Four. It is console based.  
+My implementation of Connect Four.  
 
 ![connect_four1](https://dxaviud.github.io/images/connect_four1.PNG)  
 
