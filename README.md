@@ -1,7 +1,6 @@
 # connect-four
 
 ## About
-My implementation of Connect Four.  
 
 ![connect_four1](https://dxaviud.github.io/images/connect_four1.PNG)  
 
